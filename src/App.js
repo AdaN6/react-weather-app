@@ -1,10 +1,11 @@
+import Weather from "./components/Weather";
+
 
 function App() {
   return (
     <div className="App">
-      <div className="Container">
-        <button className="btn btn-primary"> Hello </button>
-        Hello
+      <div className="container">
+        <Weather />
         <footer>
           This project was coded by Ada Neo and is open-sourced
           <a href="https://github.com/AdaN6/react-weather-app" target="_blank">
