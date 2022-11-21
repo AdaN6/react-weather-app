@@ -11,6 +11,7 @@ const Weather = () => {
               type="search"
               placeholder="Search for a city ..."
               className="form-control"
+              autoFocus="on"
             />
           </div>
           <div className="col-3">
@@ -24,13 +25,18 @@ const Weather = () => {
         <li>Mostly Cloudy</li>
       </ul>
 
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt="cloudy"
-          />
-          6°C
+          <div className="temperature-section">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              alt="cloudy"
+            />
+            
+              <span className="temperature">6</span>
+              <span className="unit">°C</span>
+          
+          </div>
         </div>
         <div className="col-6">
           <ul>
