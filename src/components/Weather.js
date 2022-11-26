@@ -44,7 +44,7 @@ const handleResponse = (res) => {
       <div className="Weather">
         <form onSubmit={handleSubmit}>
           <div className="row">
-            <div className="col-9">
+            <div className="search_field col-9">
               <input
                 type="search"
                 placeholder="Search for a city ..."
@@ -53,7 +53,7 @@ const handleResponse = (res) => {
                 onChange={handleCityChange}
               />
             </div>
-            <div className="col-3">
+            <div className="search_button col-3">
               <input type="submit" value="search" className="btn btn-primary" />
             </div>
           </div>
