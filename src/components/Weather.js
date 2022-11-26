@@ -3,7 +3,7 @@ import axios from 'axios'
 import "./Weather.css"
 
 
-const Weather = () => {
+const Weather = (props) => {
 
   const [weatherData, setWeatherData] = useState({ready: false});
 
@@ -73,7 +73,7 @@ const handleResponse = (res) => {
 
      const apiKey = "6fc8ce6b2ba7060eef7f6f255898843a";
      let city = "London";
-     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
 
      axios.get(apiUrl).then(handleResponse);
 
