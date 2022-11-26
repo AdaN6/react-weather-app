@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import axios from 'axios'
 import "./Weather.css"
-import FormatedDate from "./formatedDate"
+import WeatherInfo from './WeatherInfo'
 
 
 const Weather = (props) => {
@@ -9,7 +9,7 @@ const Weather = (props) => {
   const [weatherData, setWeatherData] = useState({ready: false});
 
 const handleResponse = (res) => {
-    console.log(res.data)
+    // console.log(res.data)
     setWeatherData({
       ready: true,
       temperature: res.data.main.temp,
@@ -19,8 +19,6 @@ const handleResponse = (res) => {
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
       wind: res.data.wind.speed,
       city: res.data.name,
-      
-
       // precipitation: res.data.main.
     })
   }
@@ -43,33 +41,8 @@ const handleResponse = (res) => {
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
-        <ul>
-          <li>
-            <FormatedDate date={weatherData.date} />
-          </li>
-          <li className="text-capitalize">{weatherData.description}</li>
-        </ul>
-
-        <div className="row mt-3">
-          <div className="col-6">
-            <div className="temperature-section">
-              <img src={weatherData.iconUrl} alt={weatherData.description} />
-
-              <span className="temperature">
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="unit">°C</span>
-            </div>
-          </div>
-          <div className="col-6">
-            <ul>
-              <li>Precipitation: 15%</li>
-              <li>Humidity: {Math.round(weatherData.humidity)}%</li>
-              <li>Wind: {weatherData.wind} km/h</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData}/>
+       
       </div>
     );
   } else {

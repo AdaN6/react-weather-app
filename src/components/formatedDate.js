@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FormatedDate = (props) => {
-console.log(props.date)
+// console.log(props.date)
 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
