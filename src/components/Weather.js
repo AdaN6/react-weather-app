@@ -5,28 +5,44 @@ import WeatherInfo from './WeatherInfo'
 
 
 const Weather = (props) => {
-
   const [weatherData, setWeatherData] = useState({ready: false});
+  const [city, setCity] = useState(props.defaultCity)
 
 const handleResponse = (res) => {
-    // console.log(res.data)
+    console.log(res.data)
     setWeatherData({
       ready: true,
       temperature: res.data.main.temp,
       humidity: res.data.main.temp,
       date: new Date(res.data.dt * 1000),
       description: res.data.weather[0].description,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+      iconUrl: `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`,
       wind: res.data.wind.speed,
       city: res.data.name,
       // precipitation: res.data.main.
-    })
+    });
   }
+
+  const search = () => {
+    const apiKey = "6fc8ce6b2ba7060eef7f6f255898843a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+ const handleSubmit = (e) => {
+  e.preventDefault()
+  search();
+ }
+
+ const handleCityChange = (e) => {
+ setCity(e.target.value)
+ }
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-9">
               <input
@@ -34,6 +50,7 @@ const handleResponse = (res) => {
                 placeholder="Search for a city ..."
                 className="form-control"
                 autoFocus="on"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
@@ -46,14 +63,8 @@ const handleResponse = (res) => {
       </div>
     );
   } else {
-
-     const apiKey = "6fc8ce6b2ba7060eef7f6f255898843a";
-     let city = "London";
-     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-
-     axios.get(apiUrl).then(handleResponse);
-
-     return "loading ..."
+    search();
+    return "loading ..."
   }
 
 

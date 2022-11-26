@@ -26,7 +26,6 @@ const WeatherInfo = (props) => {
         </div>
         <div className="col-6">
           <ul>
-            <li>Precipitation: 15%</li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind: {props.data.wind} km/h</li>
           </ul>
