@@ -16,7 +16,7 @@ const handleResponse = (res) => {
       humidity: res.data.main.temp,
       date: new Date(res.data.dt * 1000),
       description: res.data.weather[0].description,
-      iconUrl: `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`,
+      icon: res.data.weather[0].icon,
       wind: res.data.wind.speed,
       city: res.data.name,
       // precipitation: res.data.main.
